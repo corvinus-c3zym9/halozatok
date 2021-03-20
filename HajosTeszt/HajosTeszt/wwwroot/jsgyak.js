@@ -28,15 +28,17 @@
     kiir.innerHTML = "";
 
     for (var sor = 0; sor < 10; sor++) {
-        let sor = document.createElement("div");
-        kiir.appendChild(sor);
-        sor.classList.add("sorok");
+        let row = document.createElement("div");
+        kiir.appendChild(row);
+        row.classList.add("sorok");
 
         for (var oszlop = 0; oszlop <= sor; oszlop++) {
             let elem = document.createElement("div");
+            row.appendChild(elem);
+            elem.innerText = faktoriálisR(sor) / (faktoriálisR(oszlop) * (faktoriálisR(sor - oszlop)));
             elem.classList.add("elemek");
-            elem.innerHTML = `${sor}:${oszlop}`;
-            sor.appendChild(elem);
+            elem.style.color = `rgb(${255 / 10 * sor},0,${255 / 10 * sor})`;
+
         }
     }
 
