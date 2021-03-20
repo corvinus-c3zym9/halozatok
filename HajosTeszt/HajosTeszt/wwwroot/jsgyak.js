@@ -37,7 +37,6 @@
             row.appendChild(elem);
             elem.innerText = faktoriálisR(sor) / (faktoriálisR(oszlop) * (faktoriálisR(sor - oszlop)));
             elem.classList.add("elemek");
-            elem.style.color = `rgb(${255 / 10 * sor},0,${255 / 10 * sor})`;
 
         }
     }
