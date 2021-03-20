@@ -1,6 +1,6 @@
 ﻿window.onload = function () {
     let hova = document.getElementById("ide");
-    hova.innerHTML = "";
+    //hova.innerHTML = "";
 
     for (var s = 0; s < 10; s++) {
         let sor = document.createElement("div");
@@ -25,17 +25,17 @@
     }
 
     let kiir = document.getElementById("pascal");
-    kiir.innerHTML = "";
+    //kiir.innerHTML = "";
 
-    for (var sor = 0; sor < 10; sor++) {
+    for (var r = 0; r < 10; r++) {
         let row = document.createElement("div");
         kiir.appendChild(row);
         row.classList.add("sorok");
 
-        for (var oszlop = 0; oszlop <= sor; oszlop++) {
+        for (var c = 0; c <= r; c++) {
             let elem = document.createElement("div");
             row.appendChild(elem);
-            elem.innerText = faktoriálisR(sor) / (faktoriálisR(oszlop) * (faktoriálisR(sor - oszlop)));
+            elem.innerText = faktoriálisR(r) / (faktoriálisR(c) * (faktoriálisR(r - c)));
             elem.classList.add("elemek");
 
         }
