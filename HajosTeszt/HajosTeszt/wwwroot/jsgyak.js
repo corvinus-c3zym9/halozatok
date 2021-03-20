@@ -15,5 +15,29 @@
             szám.style.color = `rgb(${255 / 10 * s},0,${255 / 10 * o})`;
         }
     }
-}    
 
+    var faktoriálisR = (n) => {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * faktoriálisR(n - 1)
+        }
+    }
+
+    let kiir = document.getElementById("pascal");
+    kiir.innerHTML = "";
+
+    for (var sor = 0; sor < 10; sor++) {
+        let sor = document.createElement("div");
+        kiir.appendChild(sor);
+        sor.classList.add("sorok");
+
+        for (var oszlop = 0; oszlop <= sor; oszlop++) {
+            let elem = document.createElement("div");
+            elem.classList.add("elemek");
+            elem.innerHTML = `${sor}:${oszlop}`;
+            sor.appendChild(elem);
+        }
+    }
+
+}
