@@ -1,5 +1,4 @@
-﻿window.onload = mehet()
-{
+﻿window.onload = function () {
     let hova = document.getElementById("ide");
     hova.innerHTML = "";
 
@@ -16,4 +15,5 @@
             szám.style.color = `rgb(${255 / 10 * s},0,${255 / 10 * o})`;
         }
     }
-}
+}    
+
