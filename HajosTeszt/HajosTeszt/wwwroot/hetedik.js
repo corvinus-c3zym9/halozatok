@@ -1,46 +1,86 @@
 ﻿var kérdések;
-var kérdésSzám = 0;
+kérdésSzám = 0;
+var helyesVálasz;
 
 function letöltés() {
-    fetch('questions.json')
-        .then(r => r.json())
-        .then(d => letöltésBefejeződött(d));
+    fetch("questions.json")
+        .then(response => response.json())
+        .then(data => letöltésbefejeződött(data));
+
 }
 
-function letöltésBefejeződött(d) {
-    console.log("Sikeres letöltés")
-    console.log(d)
-    kérdések = d;
-}
+function letöltésbefejeződött(k) {
+    console.log("sikeres letöltés")
+    console.log(k)
+    kérdések = k;
+    kérdésmegjelenítés(0);
 
-var kérdésMegjelenítés = function (kérdésSzám) {
-    let kérdés_szöveg = document.getElementById("kérdés_szöveg");
+}
+function kérdésmegjelenítés(kérdés) {
+
     let kép = document.getElementById("kép1");
-    let válasz1 = document.getElementById("válasz1");
-    let válasz2 = document.getElementById("válasz2");
-    let válasz3 = document.getElementById("válasz3");
 
-    kérdés_szöveg.innerHTML = kérdések[kérdésSzám].questionText;
-    kép.src = "https://szoft1.comeback.hu/hajo/" + kérdések[kérdésSzám].image;
-    válasz1.innerText = kérdések[kérdésSzám].answer1;
-    válasz2.innerText = kérdések[kérdésSzám].answer2;
-    válasz3.innerText = kérdések[kérdésSzám].answer3;
+    document.getElementById("kérdés_szöveg").innerHTML = kérdések[kérdés].questionText;
+    document.getElementById("válasz1").innerHTML = kérdések[kérdés].answer1;
+    document.getElementById("válasz2").innerHTML = kérdések[kérdés].answer2;
+    document.getElementById("válasz3").innerHTML = kérdések[kérdés].answer3;
+    kép.src = "https://szoft1.comeback.hu/hajo/" + kérdések[kérdés].image;
+    helyesVálasz = kérdések[kérdés].correctAnswer;
+
 }
 
 window.onload = () => {
     letöltés();
-
-    document.getElementById("vissza").onclick = () => {
+    document.getElementById("vissza").onclick = function () {
         kérdésSzám--;
-        if (kérdésSzám == -1) {
-            kérdésMegjelenítés(kérdésSzám[2]);
+        if (kérdésSzám == 0) {
+            kérdésSzám = kérdések.length - 1;
+        }
+
+        kérdésmegjelenítés(kérdésSzám);
+        document.getElementById("válasz1").classList.remove("jó", "rossz");
+        document.getElementById("válasz2").classList.remove("jó", "rossz");
+        document.getElementById("válasz3").classList.remove("jó", "rossz");
+    }
+
+    document.getElementById("előre").onclick = function () {
+        kérdésSzám++;
+        if (kérdésSzám == kérdések.length) {
+            kérdésSzám = 0;
+        }
+
+        kérdésmegjelenítés(kérdésSzám);
+        document.getElementById("válasz1").classList.remove("jó", "rossz");
+        document.getElementById("válasz2").classList.remove("jó", "rossz");
+        document.getElementById("válasz3").classList.remove("jó", "rossz");
+    }
+
+
+
+    document.getElementById("válasz1").onclick = function () {
+        if (helyesVálasz == 1) {
+            document.getElementById("válasz1").classList.add('jó');
+        }
+        else {
+            document.getElementById("válasz1").classList.add('rossz');
         }
     }
 
-    document.getElementById("előre").onclick = () => {
-        kérdésSzám++;
-        if (kérdésSzám == 3) {
-            kérdésMegjelenítés(kérdésSzám[0]);
+    document.getElementById("válasz2").onclick = function () {
+        if (helyesVálasz == 2) {
+            document.getElementById("válasz2").classList.add('jó');
+        }
+        else {
+            document.getElementById("válasz2").classList.add('rossz');
+        }
+    }
+
+    document.getElementById("válasz3").onclick = function () {
+        if (helyesVálasz == 3) {
+            document.getElementById("válasz3").classList.add('jó');
+        }
+        else {
+            document.getElementById("válasz3").classList.add('rossz');
         }
     }
 }
