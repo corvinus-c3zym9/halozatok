@@ -12,15 +12,13 @@ namespace HajosTeszt.Controllers
     public class TesztController : ControllerBase
     {
         [HttpGet]
-        [Route("corvinus/szerverido")]
-        public IActionResult M1()
+        [Route("corvinus/nagybetus/{szoveg}")]
+        public IActionResult M2(string szoveg)
         {
-            string pontosIdő = DateTime.Now.ToShortTimeString();
-
             return new ContentResult
             {
                 ContentType = System.Net.Mime.MediaTypeNames.Text.Plain, //"text/plain"
-                Content = pontosIdő
+                Content = szoveg.ToUpper()
             };
         }
     }
