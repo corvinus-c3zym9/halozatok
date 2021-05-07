@@ -33,7 +33,7 @@ namespace HajosTeszt
 
             //DefaultFilesOptions options = new DefaultFilesOptions();
             //options.DefaultFileNames.Clear();
-            //options.DefaultFileNames.Add("hajo.html");
+            //options.DefaultFileNames.Add("newindex.html");
             //app.UseDefaultFiles(options);
 
             app.UseStaticFiles();
