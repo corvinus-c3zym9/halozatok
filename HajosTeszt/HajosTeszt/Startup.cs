@@ -31,14 +31,15 @@ namespace HajosTeszt
 
             app.UseDefaultFiles();
 
-            //DefaultFilesOptions options = new DefaultFilesOptions();
-            //options.DefaultFileNames.Clear();
-            //options.DefaultFileNames.Add("newindex.html");
-            //app.UseDefaultFiles(options);
-
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //DefaultFilesOptions options = new DefaultFilesOptions();
+            //options.DefaultFileNames.Clear();
+            //options.DefaultFileNames.Add("jokes.html");
+            //app.UseDefaultFiles(options);
+
 
             //app.UseEndpoints(endpoints =>
             //{
